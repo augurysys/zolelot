@@ -3,7 +3,10 @@ import { ECellStatus, ICell } from "./board.types";
 export interface IStartGame {
     generateBoard(): void;
     play(): void;
-    updateCellStatus(): void;
+    updateCellStatus(cell: ICell): void;
+    isGameCompleted(): boolean;
+    validateNumOfMoves(): boolean;
+    validateNumOfLiveShips(): boolean;
 }
 
 export class StartGame implements IStartGame {
