@@ -1,17 +1,9 @@
 import React from 'react';
 import './board.css'
 
-interface Board {
-  rows: Row[]
-}
-
-interface Row {
-  cells: Cell[]
-}
-
-interface Cell {
-  state: string
-}
+type Board = Row[];
+type Row = Cell[];
+type Cell = 'empty' | 'hit' | 'miss';
 
 interface BoardProps {
   board: Board
@@ -34,9 +26,9 @@ function Board(props: BoardProps) {
         <th>I</th>
         <th>J</th>
       </tr>
-      {board.rows.map((row: Row, index: number) => <tr>
+      {board.map((row: Row, index: number) => <tr key={`row_${index}`}>
         <th>{index + 1}</th>
-        {row.cells.map((cell: Cell) => <td>
+        {row.map((cell: Cell, index: number) => <td key={`cell_${index}`} onClick={(e) => {onCellClicked(e, cell);}}>
           {getCellContent(cell)}
         </td>)}
       </tr>)}
@@ -44,8 +36,12 @@ function Board(props: BoardProps) {
   </table>
 }
 
+function onCellClicked(e: unknown, cell: Cell) {
+  console.log(`clicked on ${JSON.stringify(cell)}`);
+}
+
 function getCellContent(cell: Cell) {
-  switch (cell.state) {
+  switch (cell) {
     case 'empty':
       return '';
     case 'miss':

@@ -3,11 +3,14 @@
 }
 .Board td,
 .Board th {
-  border: 1px solid;
   padding: 0.25em;
   width: 2em;
   height: 2em;
   text-align: center;
+  cursor: pointer;
+}
+.Board td {
+  border: 1px solid;
 }
 .is-empty {}
 .is-miss {}
