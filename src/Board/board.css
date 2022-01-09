@@ -11,6 +11,11 @@
 }
 .Board td {
   border: 1px solid;
+  transition: transform .2s linear;
+}
+.Board td:hover {
+  transform: scale(1.5);
+  transform-origin: center center;
 }
 .is-empty {}
 .is-miss {}

@@ -3,7 +3,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "../../app/store";
 
 export interface BoardState {
-  board: [][];
+  board: string[][];
   status: "empty" | "ready" | "failed";
 }
 
@@ -17,6 +17,9 @@ export const boardSlice = createSlice({
   initialState,
   // The `reducers` field lets us define reducers and generate associated actions
   reducers: {
+    clickCell: (state: BoardState, action: PayloadAction<number[]>) => {
+      state.board[action.payload[0]][action.payload[1]] = 'hit';
+    }
     // increment: (state) => {
     //   // Redux Toolkit allows us to write "mutating" logic in reducers. It
     //   // doesn't actually mutate the state because it uses the Immer library,
@@ -51,7 +54,9 @@ export const boardSlice = createSlice({
 
 export default boardSlice.reducer;
 
-// export const {} = boardSlice.actions;
+export const {
+  clickCell
+} = boardSlice.actions;
 
 // The function below is called a selector and allows us to select a value from
 // the state. Selectors can also be defined inline where they're used instead of
