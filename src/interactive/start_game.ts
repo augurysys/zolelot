@@ -9,6 +9,13 @@ export interface IStartGame {
     validateNumOfLiveShips(): boolean;
 }
 
+function validateMove() { return true; }
+function UpdateCellStatusAction(status: ECellStatus) {}
+const store = {
+    MaxNumOfMoves: 10,
+    NumOfShipCells: 30
+};
+
 export class StartGame implements IStartGame {
     play(): void {
         throw new Error("Method not implemented.");
