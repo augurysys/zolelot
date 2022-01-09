@@ -8,4 +8,4 @@ export function UpdateCellStatusAction(cell: ICell){}
 
 export function ReduceNumOfMoves(){ }
 
-export function ReduceNumOfLiveShipes(){}
+export function ReduceNumOfLiveShips(){}
